@@ -36,7 +36,7 @@ namespace weatherapi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+        
 
             app.UseRouting();
 

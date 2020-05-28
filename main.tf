@@ -3,6 +3,21 @@ provider "azurerm" {
     features{}
 }
 
+terraform {
+    backend "azurerm" {
+        resource_group_name = "tf_rgrp_blobstore"
+        storage_account_name = "tfstoreterraform"
+        container_name       = "tfstate"
+        key                 =   ""   
+    }
+}
+
+variable "imagebuild" {
+  type      = string
+  description = "Latest image build"
+}
+
+
 resource "azurerm_resource_group" "tf_test" {
     name = "tfmainrg"
     location = "westus"
@@ -19,7 +34,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
     container {
         name                    = "weatherapi"
-            image                   = "ataimoor/weatherapi:v1"
+            image                   = "ataimoor/weatherapi:${var.imagebuild}"
             cpu                     = "1"
             memory                  = "1"
 
