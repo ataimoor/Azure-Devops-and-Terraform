@@ -8,7 +8,7 @@ terraform {
         resource_group_name = "tf_rgrp_blobstore"
         storage_account_name = "tfstoreterraform"
         container_name       = "tfstate"
-        key                 =   ""   
+        key                 =   "terraform.tfstate"   
     }
 }
 
